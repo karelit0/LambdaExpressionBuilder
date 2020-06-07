@@ -36,25 +36,27 @@ namespace TestQueryFilter
             Expression<Func<Subject, bool>> filteringQuery = expressionBuilder.BuildQueryFilteringExpression(queryFilterList);
             Expression<Func<Subject, object>> sortingQuery = expressionBuilder.BuildQuerySortingExpression(querySort);
 
-            Console.WriteLine("------------------");
-            Console.WriteLine(expressionBuilder.ToString(filteringQuery));
-            Console.WriteLine(expressionBuilder.ToString(sortingQuery));
-            Console.WriteLine("------------------");
-
             List<Subject> result = foodList.Where(filteringQuery.Compile())
                 .AsQueryable()
                 .OrderBy(sortingQuery)
                 .ToList();
 
+            Console.WriteLine("------------------");
+            Console.WriteLine("----  QUERY  -----");
+            Console.WriteLine("------------------");
+            Console.WriteLine(expressionBuilder.ToString(filteringQuery));
+            Console.WriteLine("------------------");
+            Console.WriteLine("----  SORT  ------");
+            Console.WriteLine("------------------");
+            Console.WriteLine(expressionBuilder.ToString(sortingQuery));
+            Console.WriteLine("------------------");
+            Console.WriteLine("----  RESULT  ----");
+            Console.WriteLine("------------------");
+
             for (int i = 0; i < result.Count; i++)
             {
                 Console.WriteLine(result[i].ToString());
             }
-
-            Console.WriteLine("------------------");
-            Console.WriteLine(expressionBuilder.ToString(filteringQuery));
-            Console.WriteLine(expressionBuilder.ToString(sortingQuery));
-            Console.WriteLine("------------------");
 
             queryFilterList = new List<QueryFilter>
             {
@@ -74,6 +76,18 @@ namespace TestQueryFilter
                .AsQueryable()
                .OrderBy(sortingQuery)
                .ToList();
+
+            Console.WriteLine("------------------");
+            Console.WriteLine("----  QUERY  -----");
+            Console.WriteLine("------------------");
+            Console.WriteLine(expressionBuilder.ToString(filteringQuery));
+            Console.WriteLine("------------------");
+            Console.WriteLine("----  SORT  ------");
+            Console.WriteLine("------------------");
+            Console.WriteLine(expressionBuilder.ToString(sortingQuery));
+            Console.WriteLine("------------------");
+            Console.WriteLine("----  RESULT  ----");
+            Console.WriteLine("------------------");
 
             for (int i = 0; i < result.Count; i++)
             {
