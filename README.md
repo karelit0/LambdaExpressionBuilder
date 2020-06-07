@@ -166,3 +166,14 @@ Define one variable to hold the expression
 Apply filter
 
     List<Subject> result = foodList.OrderBy(sortingQuery).ToList();
+    
+## Result
+
+Subject:
+Id: 0, Name: Mathematics
+        Teacher:
+        Id: 0, Name: Daniel Maldonado
+                Student List:
+                Id: 0, Name: David Maldonado
+                Id: 1, Name: Renata Torres
+                Id: 2, Name: Chiristian Zapata
