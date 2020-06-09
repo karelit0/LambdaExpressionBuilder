@@ -3,24 +3,24 @@
 namespace LambdaExpressionBuilder.Models
 {
     /// <summary>
-    /// Defines the <see cref="QueryFilter" />
+    /// Defines the <see cref="QueryFilter" />.
     /// </summary>
     public class QueryFilter
     {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the Operator
+        /// Gets or sets the Operator.
         /// </summary>
         public OperatorEnum Operator { get; set; }
 
         /// <summary>
-        /// Gets or sets the PropertyPath
+        /// Gets or sets the PropertyPath.
         /// </summary>
         public string PropertyPath { get; set; }
 
         /// <summary>
-        /// Gets or sets the PropertyValue
+        /// Gets or sets the PropertyValue.
         /// </summary>
         public string PropertyValue { get; set; }
 

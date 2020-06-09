@@ -1,7 +1,7 @@
 ﻿namespace LambdaExpressionBuilder.Models
 {
     /// <summary>
-    /// Pagination sort parameter
+    /// Pagination sort parameter.
     /// </summary>
     public class QuerySort
     {

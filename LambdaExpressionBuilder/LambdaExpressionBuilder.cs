@@ -1,5 +1,4 @@
-﻿
-using LambdaExpressionBuilder.Enums;
+﻿using LambdaExpressionBuilder.Enums;
 using LambdaExpressionBuilder.Models;
 using System;
 using System.Collections.Generic;
@@ -10,18 +9,18 @@ using System.Reflection;
 namespace LambdaExpressionBuilder
 {
     /// <summary>
-    /// Defines the <see cref="LambdaExpressionBuilder{TEntity}" />
+    /// Defines the <see cref="LambdaExpressionBuilder{TEntity}" />.
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TEntity">.</typeparam>
     public class LambdaExpressionBuilder<TEntity>
     {
-        #region Methods
+        #region Public Methods
 
         /// <summary>
-        /// The BuildQueryFilteringExpression
+        /// The BuildQueryFilteringExpression.
         /// </summary>
-        /// <param name="filterList">The filterList<see cref="IList{QueryFilter}"/></param>
-        /// <returns>The <see cref="Expression{Func{TEntity, bool}}"/></returns>
+        /// <param name="filterList">The filterList<see cref="IList{QueryFilter}"/>.</param>
+        /// <returns>The <see cref="Expression{Func{TEntity, bool}}"/>.</returns>
         public Expression<Func<TEntity, bool>> BuildQueryFilteringExpression(IList<QueryFilter> filterList)
         {
             if (filterList == null)
@@ -41,10 +40,10 @@ namespace LambdaExpressionBuilder
         }
 
         /// <summary>
-        /// Get sort expression from <seealso cref="PageParameters.SortBy"/>
+        /// Get sort expression from <seealso cref="PageParameters.SortBy"/>.
         /// </summary>
-        /// <param name="querySort">The querySort<see cref="QuerySort"/></param>
-        /// <returns></returns>
+        /// <param name="querySort">The querySort<see cref="QuerySort"/>.</param>
+        /// <returns>.</returns>
         public Expression<Func<TEntity, object>> BuildQuerySortingExpression(QuerySort querySort)
         {
             if (querySort == null)
@@ -62,10 +61,10 @@ namespace LambdaExpressionBuilder
         }
 
         /// <summary>
-        /// The ToString
+        /// The ToString.
         /// </summary>
-        /// <param name="expression">The expression<see cref="Expression{Func{TEntity, bool}}"/></param>
-        /// <returns>The <see cref="string"/></returns>
+        /// <param name="expression">The expression<see cref="Expression{Func{TEntity, bool}}"/>.</param>
+        /// <returns>The <see cref="string"/>.</returns>
         public string ToString(Expression expression)
         {
             string expressionString = expression.ToString();
@@ -73,13 +72,17 @@ namespace LambdaExpressionBuilder
             return expressionString;
         }
 
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
-        /// The BuildExpression
+        /// The BuildExpression.
         /// </summary>
-        /// <param name="filterList">The filterList<see cref="IList{QueryFilter}"/></param>
-        /// <param name="expression">The expression<see cref="Expression"/></param>
-        /// <param name="parameterExpression">The parameterExpression<see cref="ParameterExpression"/></param>
-        /// <returns>The <see cref="Expression"/></returns>
+        /// <param name="filterList">The filterList<see cref="IList{QueryFilter}"/>.</param>
+        /// <param name="expression">The expression<see cref="Expression"/>.</param>
+        /// <param name="parameterExpression">The parameterExpression<see cref="ParameterExpression"/>.</param>
+        /// <returns>The <see cref="Expression"/>.</returns>
         private Expression BuildExpression(IList<QueryFilter> filterList, Expression expression, ParameterExpression parameterExpression)
         {
             if (expression == null)
@@ -103,11 +106,11 @@ namespace LambdaExpressionBuilder
         }
 
         /// <summary>
-        /// The GetConstant
+        /// The GetConstant.
         /// </summary>
-        /// <param name="type">The type<see cref="Type"/></param>
-        /// <param name="propertyValue">The propertyValue<see cref="string"/></param>
-        /// <returns>The <see cref="ConstantExpression"/></returns>
+        /// <param name="type">The type<see cref="Type"/>.</param>
+        /// <param name="propertyValue">The propertyValue<see cref="string"/>.</param>
+        /// <returns>The <see cref="ConstantExpression"/>.</returns>
         private ConstantExpression GetConstant(Type type, string propertyValue)
         {
             if (type == typeof(string))
@@ -154,11 +157,11 @@ namespace LambdaExpressionBuilder
         }
 
         /// <summary>
-        /// The GetExpression
+        /// The GetExpression.
         /// </summary>
-        /// <param name="parameterExpression">The parameterExpression<see cref="ParameterExpression"/></param>
-        /// <param name="queryFilter">The queryFilter<see cref="QueryFilter"/></param>
-        /// <returns>The <see cref="Expression"/></returns>
+        /// <param name="parameterExpression">The parameterExpression<see cref="ParameterExpression"/>.</param>
+        /// <param name="queryFilter">The queryFilter<see cref="QueryFilter"/>.</param>
+        /// <returns>The <see cref="Expression"/>.</returns>
         private Expression GetExpression(ParameterExpression parameterExpression, QueryFilter queryFilter)
         {
             string propertyPath = GetPropertyPath(typeof(TEntity), queryFilter.PropertyPath.Split('.'), string.Empty);
@@ -214,12 +217,12 @@ namespace LambdaExpressionBuilder
         }
 
         /// <summary>
-        /// Get property path from <typeparamref name="TEntity"/> using <paramref name="propertyPath"/>
+        /// Get property path from <typeparamref name="TEntity"/> using <paramref name="propertyPath"/>.
         /// </summary>
-        /// <param name="objectType"></param>
-        /// <param name="propertyPath"></param>
-        /// <param name="nestPropertyPath"></param>
-        /// <returns></returns>
+        /// <param name="objectType">.</param>
+        /// <param name="propertyPath">.</param>
+        /// <param name="nestPropertyPath">.</param>
+        /// <returns>.</returns>
         private string GetPropertyPath(Type objectType, IList<string> propertyPath, string nestPropertyPath)
         {
             if (propertyPath == null)
